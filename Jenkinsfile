@@ -11,12 +11,11 @@ pipeline {
         }
 
         stage('Install & Test') {
-            steps {
-                sh '''
-                    pip3 install --no-cache-dir -r app/requirements.txt
-                    PYTHONPATH=. pytest
-                '''
-            }
-        }
+    steps {
+        sh '''
+            pip3 install --break-system-packages --no-cache-dir -r app/requirements.txt
+            PYTHONPATH=. pytest
+        '''
     }
 }
+
